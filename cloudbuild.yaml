@@ -1,0 +1,51 @@
+substitutions:
+  _BUCKET: 'your-bucket-name'  # override this in the Cloud Build trigger settings
+
+steps:
+  - id: 'install'
+    name: 'node:22'
+    entrypoint: npm
+    args: ['ci']
+
+  - id: 'build'
+    name: 'node:22'
+    entrypoint: npm
+    args: ['run', 'build']
+
+  - id: 'deploy'
+    name: 'gcr.io/cloud-builders/gsutil'
+    entrypoint: bash
+    args:
+      - '-c'
+      - |
+        set -euo pipefail
+
+        # Sync dist/ to the bucket; -d removes files that no longer exist in dist/
+        gsutil -m rsync -r -d dist/ gs://${_BUCKET}/
+
+        # HTML: always revalidate so visitors see the latest content after each deploy
+        gsutil -m setmeta \
+          -h "Cache-Control:no-cache, must-revalidate" \
+          "gs://${_BUCKET}/**.html" 2>/dev/null || true
+
+        # CSS, JS, fonts: cache for 1 year
+        # If you're not content-hashing these filenames, reduce max-age to something shorter (e.g. 86400)
+        gsutil -m setmeta \
+          -h "Cache-Control:public, max-age=31536000, immutable" \
+          "gs://${_BUCKET}/**.css" \
+          "gs://${_BUCKET}/**.js" \
+          "gs://${_BUCKET}/**.woff" \
+          "gs://${_BUCKET}/**.woff2" 2>/dev/null || true
+
+        # Images: cache for 30 days
+        gsutil -m setmeta \
+          -h "Cache-Control:public, max-age=2592000" \
+          "gs://${_BUCKET}/**.jpg" \
+          "gs://${_BUCKET}/**.jpeg" \
+          "gs://${_BUCKET}/**.png" \
+          "gs://${_BUCKET}/**.webp" \
+          "gs://${_BUCKET}/**.svg" \
+          "gs://${_BUCKET}/**.gif" 2>/dev/null || true
+
+options:
+  logging: CLOUD_LOGGING_ONLY
