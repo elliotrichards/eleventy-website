@@ -1,0 +1,7 @@
+{
+	"scripts": {
+		"start": "eleventy --serve",
+		"build": "eleventy"
+	},
+	"type": "module"
+}
