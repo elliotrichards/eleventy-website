@@ -57,7 +57,7 @@ steps:
 # Automatically invalidate the Cloud CDN Cache
 # The "/*" path purges all assets globally across the edge nodes
   - id: 'invalidate-cache'    
-    name: 'gcr.io/://google.com'
+    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args: [
           'compute', 'url-maps', 'invalidate-cdn-cache', 'url-map',
