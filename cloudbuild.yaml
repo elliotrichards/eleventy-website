@@ -6,11 +6,17 @@ steps:
     name: 'node:22'
     entrypoint: npm
     args: ['ci']
+    volumes:
+      - name: 'node_modules'
+        path: '/workspace/node_modules'
 
   - id: 'build'
     name: 'node:22'
     entrypoint: npm
     args: ['run', 'build']
+    volumes:
+      - name: 'node_modules'
+        path: '/workspace/node_modules'
 
   - id: 'deploy'
     name: 'gcr.io/cloud-builders/gsutil'
