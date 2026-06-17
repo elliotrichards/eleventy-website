@@ -28,16 +28,7 @@ steps:
 
         # Sync dist/ to the bucket; -d removes files that no longer exist in dist/
         gsutil -m rsync -r -d dist/ gs://${_BUCKET}/
-
-        # Automatically invalidate the Cloud CDN Cache
-        # The "/*" path purges all assets globally across the edge nodes
-        - name: 'gcr.io/://google.com'
-          entrypoint: 'gcloud'
-          args: [
-            'compute', 'url-maps', 'invalidate-cdn-cache', 'url-map',
-            '--path=/*',
-            '--async'
-          ]
+        
 
         # HTML: always revalidate so visitors see the latest content after each deploy
         gsutil -m setmeta \
@@ -62,6 +53,17 @@ steps:
           "gs://${_BUCKET}/**.webp" \
           "gs://${_BUCKET}/**.svg" \
           "gs://${_BUCKET}/**.gif" 2>/dev/null || true
+
+# Automatically invalidate the Cloud CDN Cache
+# The "/*" path purges all assets globally across the edge nodes
+  - id: 'invalidate-cache'    
+    name: 'gcr.io/://google.com'
+    entrypoint: 'gcloud'
+    args: [
+          'compute', 'url-maps', 'invalidate-cdn-cache', 'url-map',
+          '--path=/*',
+          '--async'
+          ]
 
 options:
   logging: CLOUD_LOGGING_ONLY
