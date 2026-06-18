@@ -1,5 +1,5 @@
 substitutions:
-  _BUCKET: 'elliotx.com/'  # override this in the Cloud Build trigger settings
+  _BUCKET: 'elliotx.com'  # override this in the Cloud Build trigger settings
 
 steps:
   - id: 'install'
