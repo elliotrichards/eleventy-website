@@ -54,16 +54,5 @@ steps:
           "gs://${_BUCKET}/**.svg" \
           "gs://${_BUCKET}/**.gif" 2>/dev/null || true
 
-# Automatically invalidate the Cloud CDN Cache
-# The "/*" path purges all assets globally across the edge nodes
-  - id: 'invalidate-cache'    
-    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gcloud'
-    args: [
-          'compute', 'url-maps', 'invalidate-cdn-cache', 'url-map',
-          '--path=/*',
-          '--async'
-          ]
-
 options:
   logging: CLOUD_LOGGING_ONLY
