@@ -17,11 +17,11 @@ export interface SiteConfig {
 }
 
 export const config: SiteConfig = {
-  title: "Volks-Typo",
-  description: "A blog exploring the intersection of design, typography, and history",
+  title: "Elliot X",
+  description: "Shenanigans and mischief.",
   author: {
     name: "Elliot",
-    bio: "Writer, designer, and explorer of aesthetic tensions between past and present.",
+    bio: ".",
     // avatar: "/images/avatar.jpg" // Uncomment and add your avatar image to public/images/
   },
   social: {},
