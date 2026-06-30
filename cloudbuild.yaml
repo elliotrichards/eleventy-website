@@ -27,8 +27,7 @@ steps:
         set -euo pipefail
 
         # Sync dist/ to the bucket; -d removes files that no longer exist in dist/
-        # gsutil -m rsync -r -d dist/ gs://${_BUCKET}/
-        
+        gsutil -m rsync -r -d dist/ gs://${_BUCKET}/
 
         # HTML: always revalidate so visitors see the latest content after each deploy
         gsutil -m setmeta \
