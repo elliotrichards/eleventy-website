@@ -10,7 +10,8 @@ async function generateScreenshots() {
   const context = await browser.newContext();
   
   // Base URL - GitHub Pages live site
-  const baseURL = 'https://jdrhyne.github.io/volks-typo';
+  // const baseURL = 'https://jdrhyne.github.io/volks-typo';
+  const baseURL = 'https://elliotx.com';
   
   console.log('🎨 Generating Volks-Typo theme screenshots for submission...\n');
   
