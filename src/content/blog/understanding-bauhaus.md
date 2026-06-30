@@ -1,10 +1,17 @@
 ---
-title: "Understanding Bauhaus: Form, Function, and the Modern Web"
-date: "2025-06-07"
-description: "A deep dive into how Bauhaus principles continue to shape contemporary digital design"
-excerpt: "From the workshops of Weimar to the screens of today, the Bauhaus movement's radical approach to design continues to influence how we think about digital spaces."
-categories: ["Design", "History", "Web Development"]
-tags: ["Bauhaus", "Design Theory", "Modernism", "UI Design"]
+title: 'Understanding Bauhaus: Form, Function, and the Modern Web'
+description: A deep dive into how Bauhaus principles continue to shape contemporary digital design
+date: 2026-06-30
+excerpt: From the workshops of Weimar to the screens of today, the Bauhaus movement's radical approach to design continues to influence how we think about digital spaces.
+categories:
+- Design
+- History
+- Web Development
+tags:
+- Bauhaus
+- Design Theory
+- Modernism
+- UI Design
 ---
 
 # Understanding Bauhaus: Form, Function, and the Modern Web
