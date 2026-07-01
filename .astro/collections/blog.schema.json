@@ -29,13 +29,6 @@
         "excerpt": {
           "type": "string"
         },
-        "categories": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "default": []
-        },
         "topics": {
           "type": "array",
           "items": {
