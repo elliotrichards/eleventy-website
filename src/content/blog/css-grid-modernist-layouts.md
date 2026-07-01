@@ -1,6 +1,6 @@
 ---
 title: "Building Modernist Layouts with CSS Grid"
-date: "2025-06-06"
+date: "2026-06-06"
 description: "How CSS Grid enables us to create layouts inspired by Bauhaus and constructivist design"
 excerpt: "CSS Grid isn't just a layout tool—it's a design philosophy made manifest in code. Learn how to create modernist-inspired layouts that would make Mondrian proud."
 categories: ["Web Development", "Design", "CSS"]

@@ -53,7 +53,7 @@ const publishedTime = frontmatter.date ? new Date(frontmatter.date).toISOString(
           })}
         </time>
         
-        <span class="post-reading-time">{readingTime}</span>
+        
         
         {frontmatter.categories && frontmatter.categories.length > 0 && (
           <div class="post-categories">
@@ -64,6 +64,16 @@ const publishedTime = frontmatter.date ? new Date(frontmatter.date).toISOString(
             ))}
           </div>
         )}
+
+        {frontmatter.topics && frontmatter.topics.length > 0 && (
+            <div class="post-topics">
+              {frontmatter.topics.map((topic: string) => (
+                <a href={`${base}topics/${topic.toLowerCase().replace(/[\/\s]+/g, '-')}`} class="topic-tag"> 
+                {topic}
+                </a>
+              ))}
+            </div>
+          )}
       </div>
       
       {frontmatter.excerpt && (

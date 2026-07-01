@@ -9,26 +9,26 @@ const mdxPostsGlob = import.meta.glob('../content/blog/*.mdx', { eager: true });
 
 const allPosts = [...Object.values(mdPostsGlob), ...Object.values(mdxPostsGlob)] as any[];
 
-// Extract all categories from posts
-const allCategories = new Set<string>();
+// Extract all topics from posts
+const allTopics = new Set<string>();
 allPosts.forEach((post: any) => {
-  if (post.frontmatter.categories) {
-    post.frontmatter.categories.forEach((category: string) => {
-      allCategories.add(category);
+  if (post.frontmatter.topics) {
+    post.frontmatter.topics.forEach((topic: string) => {
+      allTopics.add(topic);
     });
   }
 });
 
-// Create category map with post counts
-const categoryMap: Record<string, any[]> = {};
-Array.from(allCategories).forEach((category: string) => {
-  categoryMap[category] = allPosts.filter((post: any) => 
-    post.frontmatter.categories && post.frontmatter.categories.includes(category)
+// Create topic map with post counts
+const topicMap: Record<string, any[]> = {};
+Array.from(allTopics).forEach((topic: string) => {
+  topicMap[topic] = allPosts.filter((post: any) => 
+    post.frontmatter.topics && post.frontmatter.topics.includes(topic)
   );
 });
 
-// Sort categories by post count (descending) then alphabetically
-const sortedCategories = Object.entries(categoryMap)
+// Sort topics by post count (descending) then alphabetically
+const sortedTopics = Object.entries(topicMap)
   .sort((a: any, b: any) => {
     if (b[1].length !== a[1].length) {
       return b[1].length - a[1].length;
@@ -37,22 +37,22 @@ const sortedCategories = Object.entries(categoryMap)
   });
 ---
 
-<Layout title="Categories" description="Browse articles by category" showSidebar={false}>
-  <div class="categories-page">
+<Layout title="Topics -" description="Browse articles by topic" showSidebar={false}>
+  <div class="topics-page">
     <header class="page-header">
-      <h1 class="page-title">Categories</h1>
+      <h1 class="page-title">Topics</h1>
       <p class="page-description">
-        Browse articles organised by category.
+        Browse articles organised by topic.
       </p>
       <hr class="page-rule" />
     </header>
 
-    <div class="categories-grid">
-      {sortedCategories.map(([category, posts]: [string, any[]]) => (
-        <div class="category-card">
-          <a href={`${base}categories/${category.toLowerCase().replace(/[\/\s]+/g, '-')}`} class="category-link">
-            <h2 class="category-title">{category}</h2>
-            <p class="category-count">
+    <div class="topics-grid">
+      {sortedTopics.map(([topic, posts]: [string, any[]]) => (
+        <div class="topic-card">
+          <a href={`${base}topics/${topic.toLowerCase().replace(/[\/\s]+/g, '-')}`} class="topic-link">
+            <h2 class="topic-title">{topic}</h2>
+            <p class="topic-count">
               {posts.length} article{posts.length === 1 ? '' : 's'}
             </p>
           </a>
@@ -60,9 +60,9 @@ const sortedCategories = Object.entries(categoryMap)
       ))}
     </div>
 
-    {sortedCategories.length === 0 && (
-      <div class="no-categories">
-        <p>No categories found. Add categories to your blog posts in the frontmatter.</p>
+    {sortedTopics.length === 0 && (
+      <div class="no-topics">
+        <p>No topics found. Add topics to your blog posts in the frontmatter.</p>
       </div>
     )}
   </div>

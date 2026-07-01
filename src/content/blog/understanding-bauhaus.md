@@ -12,6 +12,8 @@ tags:
 - Design Theory
 - Modernism
 - UI Design
+topics:
+- design
 ---
 
 # Understanding Bauhaus: Form, Function, and the Modern Web

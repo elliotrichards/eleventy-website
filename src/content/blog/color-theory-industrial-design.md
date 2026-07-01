@@ -3,8 +3,8 @@ title: "Color Theory in Industrial Design"
 date: "2025-06-03"
 description: "How industrial designers use color to communicate function and emotion"
 excerpt: "Color in industrial design isn't decoration—it's communication. From safety warnings to brand identity, color choices shape how we interact with objects."
-categories: ["Design", "Color Theory"]
-tags: ["Industrial Design", "Color", "Product Design", "Psychology"]
+topics: ["Design"]
+tags: ["Industrial Design", "Colour", "Product Design", "Psychology"]
 ---
 
 # Color Theory in Industrial Design

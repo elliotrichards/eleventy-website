@@ -36,6 +36,13 @@
           },
           "default": []
         },
+        "topics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
         "tags": {
           "type": "array",
           "items": {
