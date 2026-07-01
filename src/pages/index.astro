@@ -16,7 +16,6 @@ const sortedPosts = allPosts
     <!-- Demo Section -->
     <section class="demo-section" id="demo">
       <div class="container">
-        <h2 class="section-title">Latest posts</h2>
         
         {sortedPosts.length > 0 && (
           <div class="demo-posts">
@@ -34,7 +33,6 @@ const sortedPosts = allPosts
                       day: 'numeric'
                     })}
                   </time>
-                  <span class="demo-post-reading-time">5 min read</span>
                 </div>
                 
                 {post.frontmatter.excerpt && (

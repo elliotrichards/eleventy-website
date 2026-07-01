@@ -17,10 +17,10 @@ export interface SiteConfig {
 }
 
 export const config: SiteConfig = {
-  title: "Elliot Xx",
+  title: "elliotx.com",
   description: "Shenanigans and mischief.",
   author: {
-    name: "Elliot",
+    name: "Elliot Richards",
     bio: ".",
     // avatar: "/images/avatar.jpg" // Uncomment and add your avatar image to public/images/
   },

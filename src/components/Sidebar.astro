@@ -11,6 +11,7 @@ const recentPosts = allPosts
   .slice(0, 5);
 
 const categories = [...new Set(allPosts.flatMap((post: any) => post.frontmatter.categories || []))];
+const topics = [...new Set(allPosts.flatMap((post: any) => post.frontmatter.topics || []))];
 ---
 
 <div class="sidebar-content">
@@ -76,6 +77,22 @@ const categories = [...new Set(allPosts.flatMap((post: any) => post.frontmatter.
           <li class="category-item">
             <a href={`${base}categories/${category.toLowerCase().replace(/[\/\s]+/g, '-')}`} class="category-link">
               {category}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <!-- Topics Section -->
+  {topics.length > 0 && (
+    <section class="topics">
+      <h3 class="section-title">Topics</h3>
+      <ul class="topic-list">
+        {topics.map(topic => (
+          <li class="topic-item">
+            <a href={`${base}topics/${topic.toLowerCase().replace(/[\/\s]+/g, '-')}`} class="topic-link">
+              {topic}
             </a>
           </li>
         ))}

@@ -10,18 +10,16 @@ const sortedPosts = allPosts
   .sort((a: any, b: any) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
 ---
 
-<Layout title="Blog | Volks-Typo" description="All blog posts from the Volks-Typo theme">
+<Layout title="Blog" description="All blog posts from elliotx.com">
+  
   <div class="blog-page">
+  
     <header class="blog-header">
-      <h1 class="blog-title">Blog</h1>
-      <p class="blog-description">
-        Exploring design, typography, and the intersection of historical aesthetics with modern functionality.
-      </p>
-      <hr class="blog-rule" />
     </header>
 
     {sortedPosts.length > 0 ? (
-      <div class="posts-list">
+  
+  <div class="posts-list">
         {sortedPosts.map((post: any) => (
           <article class="post-item">
             <h2 class="post-title">
@@ -29,6 +27,7 @@ const sortedPosts = allPosts
             </h2>
             
             <div class="post-meta">
+
               <time class="post-date" datetime={post.frontmatter.date}>
                 {new Date(post.frontmatter.date).toLocaleDateString('en-US', {
                   year: 'numeric',
@@ -37,7 +36,6 @@ const sortedPosts = allPosts
                 })}
               </time>
               
-              <span class="post-reading-time">5 min read</span>
               
               {post.frontmatter.categories && (
                 <div class="post-categories">
@@ -45,6 +43,15 @@ const sortedPosts = allPosts
                     <span class="category">{category}</span>
                   ))}
                 </div>
+              )}
+              
+              {post.frontmatter.topics && (
+                <div class="post-categories">
+                  {post.frontmatter.topics.map((topic: string) => (
+                    <span class="topic">{topic}</span>
+                  ))}
+                </div>
+
               )}
             </div>
             
@@ -56,12 +63,25 @@ const sortedPosts = allPosts
           </article>
         ))}
       </div>
+
+      <div class="post-meta">
+
+
+
+
+
+        
+      </div>
     ) : (
       <div class="no-posts">
         <p>No posts available yet. Start writing by creating files in <code>src/pages/blog/</code></p>
       </div>
     )}
+
+    
   </div>
+
+  
 </Layout>
 
 <style>
